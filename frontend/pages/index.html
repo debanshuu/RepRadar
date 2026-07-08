@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WorkoutTracker</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 20px; font-weight: 700; color: var(--text); }
+    .logo span { color: var(--primary); }
+    .nav-links { display: flex; gap: 12px; }
+    .hero { max-width: 720px; margin: 120px auto; text-align: center; padding: 0 20px; }
+    .hero h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
+    .hero h1 span { color: var(--primary); }
+    .hero p { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; }
+    .hero-btns button { width: auto; padding: 14px 32px; font-size: 16px; }
+    .features { max-width: 960px; margin: 80px auto; padding: 0 20px; }
+    .features h2 { text-align: center; font-size: 32px; margin-bottom: 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .feature-tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 12px; }
+    .feature-card h3 { font-size: 18px; margin-bottom: 8px; }
+    .feature-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+    footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 80px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Workout<span>Tracker</span></div>
+    <div class="nav-links">
+      <button class="btn-secondary" onclick="window.location.href='login.html'">Log in</button>
+      <button class="btn-primary" style="width:auto;padding:10px 20px" onclick="window.location.href='register.html'">Get started</button>
+    </div>
+  </nav>
+  <div class="hero">
+    <h1>Train smarter.<br/><span>Track everything.</span></h1>
+    <p>Build workout plans, schedule sessions, and monitor your strength progress — all in one place.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="window.location.href='register.html'">Start for free</button>
+      <button class="btn-secondary" onclick="window.location.href='login.html'">Log in</button>
+    </div>
+  </div>
+  <div class="features">
+    <h2>Everything you need</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-tag">Plans</div><h3>Workout plans</h3><p>Create custom workout plans with exercises, sets, reps and weights.</p></div>
+      <div class="feature-card"><div class="feature-tag">Schedule</div><h3>Schedule sessions</h3><p>Plan your week ahead and never miss a training session again.</p></div>
+      <div class="feature-card"><div class="feature-tag">Progress</div><h3>Track progress</h3><p>See your strength gains over time with detailed progress reports.</p></div>
+      <div class="feature-card"><div class="feature-tag">Library</div><h3>Exercise library</h3><p>Browse 50+ exercises across all muscle groups with instructions.</p></div>
+      <div class="feature-card"><div class="feature-tag">Consistency</div><h3>Workout streaks</h3><p>Stay consistent and build momentum with your workout streak.</p></div>
+      <div class="feature-card"><div class="feature-tag">Reports</div><h3>Monthly reports</h3><p>Get weekly and monthly summaries of your training volume.</p></div>
+    </div>
+  </div>
+  <footer>Built with FastAPI &amp; vanilla JS &copy; 2026 WorkoutTracker</footer>
+  <script src="../js/utils.js"></script>
+  <script>redirectIfLoggedIn();</script>
+</body>
+</html>

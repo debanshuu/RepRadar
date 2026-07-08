@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — WorkoutTracker</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; background: var(--bg-card); border-right: 1px solid var(--border); padding: 24px 0; display: flex; flex-direction: column; position: fixed; height: 100vh; }
+    .sidebar-logo { font-size: 18px; font-weight: 700; padding: 0 24px 24px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .sidebar-logo span { color: var(--primary); }
+    .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 24px; color: var(--text-muted); font-size: 14px; cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent; }
+    .nav-item:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    .nav-item.active { color: var(--primary); border-left-color: var(--primary); background: rgba(99,102,241,0.08); }
+    .nav-icon { width: 18px; text-align: center; font-size: 16px; }
+    .sidebar-bottom { margin-top: auto; padding: 16px 24px; border-top: 1px solid var(--border); }
+    .main { margin-left: 240px; padding: 40px; flex: 1; }
+    .page-header { margin-bottom: 32px; }
+    .page-header h1 { font-size: 28px; font-weight: 700; }
+    .page-header p { color: var(--text-muted); margin-top: 4px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .stat-value { font-size: 32px; font-weight: 700; }
+    .stat-value.primary { color: var(--primary); }
+    .stat-value.success { color: var(--success); }
+    .stat-value.warning { color: var(--warning); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .section-header h2 { font-size: 16px; font-weight: 600; }
+    .workout-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .workout-item:last-child { border-bottom: none; }
+    .workout-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .workout-meta { font-size: 12px; color: var(--text-muted); }
+    .user-info { display: flex; align-items: center; gap: 10px; }
+    .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+    .user-name { font-size: 13px; font-weight: 500; }
+    .user-email { font-size: 11px; color: var(--text-muted); }
+    .btn-sm { padding: 6px 14px; font-size: 13px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Workout<span>Tracker</span></div>
+      <nav>
+        <div class="nav-item active" onclick="window.location.href='dashboard.html'">
+          <span class="nav-icon">&#9632;</span> Dashboard
+        </div>
+        <div class="nav-item" onclick="window.location.href='workouts.html'">
+          <span class="nav-icon">&#9651;</span> Workouts
+        </div>
+        <div class="nav-item" onclick="window.location.href='create-workout.html'">
+          <span class="nav-icon">&#43;</span> New workout
+        </div>
+        <div class="nav-item" onclick="window.location.href='reports.html'">
+          <span class="nav-icon">&#9636;</span> Reports
+        </div>
+        <div class="nav-item" onclick="window.location.href='profile.html'">
+          <span class="nav-icon">&#9675;</span> Profile
+        </div>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="user-info" style="margin-bottom:12px">
+          <div class="avatar" id="avatarInitial">?</div>
+          <div>
+            <div class="user-name" id="sidebarName">—</div>
+            <div class="user-email" id="sidebarEmail">—</div>
+          </div>
+        </div>
+        <button class="btn-secondary btn-sm" style="width:100%" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="page-header">
+        <h1 id="welcomeMsg">Welcome back!</h1>
+        <p>Here's your fitness overview</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total workouts</div>
+          <div class="stat-value primary" id="statTotal">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Completed</div>
+          <div class="stat-value success" id="statCompleted">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending</div>
+          <div class="stat-value warning" id="statPending">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">This month</div>
+          <div class="stat-value" id="statMonthly">—</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="section-header">
+            <h2>Upcoming workouts</h2>
+            <button class="btn-secondary btn-sm" onclick="window.location.href='workouts.html'">View all</button>
+          </div>
+          <div id="upcomingList"><div class="empty-state"><h3>No upcoming workouts</h3><p>Create one to get started</p></div></div>
+        </div>
+        <div class="card">
+          <div class="section-header">
+            <h2>Recent activity</h2>
+          </div>
+          <div id="recentList"><div class="empty-state"><h3>No activity yet</h3><p>Complete a workout to see it here</p></div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script>
+    requireAuth();
+
+    async function loadDashboard() {
+      const [historyRes, monthlyRes, workoutsRes] = await Promise.all([
+        getHistory(), getMonthly(), getWorkouts()
+      ]);
+
+      const history = await historyRes.json();
+      const monthly = await monthlyRes.json();
+      const workouts = await workoutsRes.json();
+
+      document.getElementById("statTotal").textContent = history.total_workouts;
+      document.getElementById("statCompleted").textContent = history.completed;
+      document.getElementById("statPending").textContent = history.pending;
+      document.getElementById("statMonthly").textContent = monthly.total_workouts;
+
+      const pending = workouts.filter(w => w.status === "pending")
+        .sort((a, b) => new Date(a.scheduled_date) - new Date(b.scheduled_date))
+        .slice(0, 4);
+
+      const completed = workouts.filter(w => w.status === "completed")
+        .slice(-4).reverse();
+
+      if (pending.length) {
+        document.getElementById("upcomingList").innerHTML = pending.map(w => `
+          <div class="workout-item">
+            <div>
+              <div class="workout-name">${w.title}</div>
+              <div class="workout-meta">${formatDate(w.scheduled_date)} ${w.scheduled_time ? "· " + w.scheduled_time : ""}</div>
+            </div>
+            <span class="badge badge-pending">Pending</span>
+          </div>`).join("");
+      }
+
+      if (completed.length) {
+        document.getElementById("recentList").innerHTML = completed.map(w => `
+          <div class="workout-item">
+            <div>
+              <div class="workout-name">${w.title}</div>
+              <div class="workout-meta">${formatDate(w.scheduled_date)}</div>
+            </div>
+            <span class="badge badge-completed">Done</span>
+          </div>`).join("");
+      }
+    }
+
+    async function loadUser() {
+      const token = getToken();
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      const res = await fetch("http://127.0.0.1:8000/auth/profile", {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+    }
+
+    async function init() {
+      try {
+        const token = getToken();
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        const res = await getWorkouts();
+        const workouts = await res.json();
+        await loadDashboard();
+      } catch(e) {
+        console.error(e);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

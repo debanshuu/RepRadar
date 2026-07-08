@@ -5,22 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Log in — WorkoutTracker</title>
   <link rel="stylesheet" href="../css/main.css"/>
-  <style>
-    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-    .auth-box { width: 100%; max-width: 420px; padding: 20px; }
-    .logo { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 32px; }
-    .logo span { color: var(--primary); }
-    h1 { font-size: 26px; margin-bottom: 8px; }
-    .subtitle { color: var(--text-muted); margin-bottom: 32px; font-size: 15px; }
-    .footer-link { text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
-  </style>
+  <link rel="stylesheet" href="../css/auth.css"/>
 </head>
 <body>
   <div class="auth-box">
-    <div class="logo">Workout<span>Tracker</span></div>
+    <div class="auth-logo">Workout<span>Tracker</span></div>
     <div class="card">
       <h1>Welcome back</h1>
-      <p class="subtitle">Log in to your account</p>
+      <p class="auth-subtitle">Log in to your account</p>
       <div class="form-group">
         <label>Email</label>
         <input type="email" id="email" placeholder="you@example.com"/>
@@ -31,31 +23,10 @@
       </div>
       <button class="btn-primary" id="loginBtn" onclick="handleLogin()">Log in</button>
     </div>
-    <div class="footer-link">Don't have an account? <a href="register.html">Sign up</a></div>
+    <div class="auth-footer">Don't have an account? <a href="register.html">Sign up</a></div>
   </div>
   <script src="../js/utils.js"></script>
   <script src="../js/api.js"></script>
-  <script>
-    redirectIfLoggedIn();
-    async function handleLogin() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-      const btn = document.getElementById("loginBtn");
-      if (!email || !password) return showToast("Fill in all fields", "error");
-      btn.innerHTML = '<span class="spinner"></span>';
-      btn.disabled = true;
-      const res = await login(email, password);
-      const data = await res.json();
-      if (res.ok) {
-        setToken(data.access_token);
-        window.location.href = "dashboard.html";
-      } else {
-        showToast(data.detail || "Login failed", "error");
-        btn.innerHTML = "Log in";
-        btn.disabled = false;
-      }
-    }
-    document.addEventListener("keydown", e => { if (e.key === "Enter") handleLogin(); });
-  </script>
-</body>
+  
+<script src="../js/utils.js"></script><script src="../js/api.js"></script><script src="../js/auth.js"></script><script>redirectIfLoggedIn();</script><script src="../js/utils.js"></script><script src="../js/api.js"></script><script src="../js/auth.js"></script><script>redirectIfLoggedIn();</script></body>
 </html>

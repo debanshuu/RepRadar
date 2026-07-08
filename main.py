@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from backend.database import Base, engine
 from backend.routers import auth, exercises, workouts, reports
 import backend.models.user
@@ -22,6 +24,9 @@ app.include_router(exercises.router)
 app.include_router(workouts.router)
 app.include_router(reports.router)
 
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
 @app.get("/")
 def root():
-    return {"message": "Workout Tracker API is running"}
+    return FileResponse("frontend/pages/index.html")
+

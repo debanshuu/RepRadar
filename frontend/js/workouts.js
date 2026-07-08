@@ -25,7 +25,7 @@ function renderWorkouts(workouts) {
     return;
   }
   grid.innerHTML = workouts.map(w => `
-    <div class="workout-card" onclick="window.location.href='workout-detail.html?id=${w.id}'">
+    <div class="workout-card" onclick="window.location.href='/static/pages/workout-detail.html?id=${w.id}'">
       <div class="workout-card-header">
         <div>
           <div class="workout-card-title">${w.title}</div>
@@ -38,7 +38,7 @@ function renderWorkouts(workouts) {
         <span class="exercise-count">${w.exercises.length} exercise${w.exercises.length !== 1 ? "s" : ""}</span>
         <div class="card-actions" onclick="event.stopPropagation()">
           ${w.status === "pending" ? `<button class="btn-primary btn-xs" onclick="markDone(${w.id})">Mark done</button>` : ""}
-          <button class="btn-secondary btn-xs" onclick="window.location.href='edit-workout.html?id=${w.id}'">Edit</button>
+          <button class="btn-secondary btn-xs" onclick="window.location.href='/static/pages/edit-workout.html?id=${w.id}'">Edit</button>
           <button class="btn-danger btn-xs" onclick="removeWorkout(${w.id})">Delete</button>
         </div>
       </div>
@@ -59,3 +59,5 @@ async function removeWorkout(id) {
 }
 
 loadWorkouts();
+
+loadSidebarUser();

@@ -5,25 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard — WorkoutTracker</title>
   <link rel="stylesheet" href="../css/main.css"/>
+  <link rel="stylesheet" href="../css/components.css"/>
 </head>
 <body>
   <div class="layout">
     <aside class="sidebar">
       <div class="sidebar-logo">Workout<span>Tracker</span></div>
       <nav>
-        <div class="nav-item active" onclick="window.location.href='dashboard.html'">
+        <div class="nav-item active" onclick="window.location.href='/static/pages/dashboard.html'">
           <span class="nav-icon">&#9632;</span> Dashboard
         </div>
-        <div class="nav-item" onclick="window.location.href='workouts.html'">
+        <div class="nav-item" onclick="window.location.href='/static/pages/workouts.html'">
           <span class="nav-icon">&#9651;</span> Workouts
         </div>
-        <div class="nav-item" onclick="window.location.href='create-workout.html'">
+        <div class="nav-item" onclick="window.location.href='/static/pages/create-workout.html'">
           <span class="nav-icon">&#43;</span> New workout
         </div>
-        <div class="nav-item" onclick="window.location.href='reports.html'">
+        <div class="nav-item" onclick="window.location.href='/static/pages/reports.html'">
           <span class="nav-icon">&#9636;</span> Reports
         </div>
-        <div class="nav-item" onclick="window.location.href='profile.html'">
+        <div class="nav-item" onclick="window.location.href='/static/pages/profile.html'">
           <span class="nav-icon">&#9675;</span> Profile
         </div>
       </nav>
@@ -68,7 +69,7 @@
         <div class="card">
           <div class="section-header">
             <h2>Upcoming workouts</h2>
-            <button class="btn-secondary btn-sm" onclick="window.location.href='workouts.html'">View all</button>
+            <button class="btn-secondary btn-sm" onclick="window.location.href='/static/pages/workouts.html'">View all</button>
           </div>
           <div id="upcomingList"><div class="empty-state"><h3>No upcoming workouts</h3><p>Create one to get started</p></div></div>
         </div>

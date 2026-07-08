@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Workout — WorkoutTracker</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <link rel="stylesheet" href="../css/components.css"/>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Workout<span>Tracker</span></div>
+      <nav>
+        <div class="nav-item" onclick="window.location.href='/static/pages/dashboard.html'"><span class="nav-icon">&#9632;</span> Dashboard</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/workouts.html'"><span class="nav-icon">&#9651;</span> Workouts</div>
+        <div class="nav-item active" onclick="window.location.href='/static/pages/create-workout.html'"><span class="nav-icon">&#43;</span> New workout</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/reports.html'"><span class="nav-icon">&#9636;</span> Reports</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/profile.html'"><span class="nav-icon">&#9675;</span> Profile</div>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="user-info">
+          <div class="avatar">?</div>
+          <div>
+            <div class="user-name">—</div>
+            <div class="user-email">—</div>
+          </div>
+        </div>
+        <button class="btn-secondary btn-sm" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="page-header">
+        <h1>New workout</h1>
+        <button class="btn-secondary" style="width:auto;padding:10px 20px" onclick="window.location.href='/static/pages/workouts.html'">Cancel</button>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="section-title">Workout details</div>
+        <div class="form-group">
+          <label>Workout name</label>
+          <input type="text" id="title" placeholder="e.g. Push Day"/>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="description" rows="2" placeholder="Optional notes about this workout..."></textarea>
+        </div>
+        <div class="two-col">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="scheduled_date"/>
+          </div>
+          <div class="form-group">
+            <label>Time</label>
+            <input type="time" id="scheduled_time"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Exercises</div>
+        <div id="exerciseRows"></div>
+        <button class="add-exercise-btn" onclick="openModal()">+ Add exercise</button>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-primary" id="saveBtn" onclick="saveWorkout()">Save workout</button>
+        <button class="btn-secondary" onclick="window.location.href='/static/pages/workouts.html'">Cancel</button>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modal" style="display:none">
+    <div class="modal">
+      <h3>Add exercise</h3>
+      <input class="modal-search" type="text" placeholder="Search exercises..." oninput="filterExercises(this.value)" id="exerciseSearch"/>
+      <div class="exercise-list" id="exerciseList"></div>
+      <div class="modal-footer">
+        <button class="btn-secondary" style="width:auto;padding:8px 20px" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/create-workout.js"></script>
+</body>
+</html>

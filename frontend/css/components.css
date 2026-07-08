@@ -33,3 +33,85 @@
 .modal-search { width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; color: var(--text); font-size: 14px; margin-bottom: 12px; }
 .modal-search:focus { outline: none; border-color: var(--primary); }
 .modal-footer { display: flex; justify-content: flex-end; margin-top: 16px; }
+
+.back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 14px; cursor: pointer; margin-bottom: 24px; border: none; background: none; padding: 0; }
+.back-btn:hover { color: var(--text); }
+
+.workout-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+.workout-meta { display: flex; gap: 16px; color: var(--text-muted); font-size: 14px; }
+.workout-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
+.header-actions { display: flex; gap: 10px; }
+
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.info-item { background: var(--bg-input); border-radius: 8px; padding: 16px; }
+.info-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.info-value { font-size: 16px; font-weight: 600; }
+
+.exercise-table { width: 100%; border-collapse: collapse; }
+.exercise-table th { text-align: left; font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+.exercise-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+.exercise-table tr:last-child td { border-bottom: none; }
+.exercise-name { font-weight: 500; }
+.exercise-muscle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+.workout-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: border-color 0.2s; cursor: pointer; }
+.workout-card:hover { border-color: var(--primary); }
+.workout-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.workout-card-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.workout-card-date { font-size: 12px; color: var(--text-muted); }
+.workout-card-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
+.workout-card-footer { display: flex; justify-content: space-between; align-items: center; }
+.exercise-count { font-size: 12px; color: var(--text-muted); }
+.card-actions { display: flex; gap: 8px; }
+.workout-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
+.workout-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.workout-item:last-child { border-bottom: none; }
+.workout-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.workout-meta-sm { font-size: 12px; color: var(--text-muted); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.stat-value { font-size: 32px; font-weight: 700; }
+.stat-value.primary { color: var(--primary); }
+.stat-value.success { color: var(--success); }
+.stat-value.warning { color: var(--warning); }
+
+.filters { display: flex; gap: 12px; margin-bottom: 24px; }
+.filters input { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; color: var(--text); font-size: 14px; width: 260px; }
+.filters input:focus { outline: none; border-color: var(--primary); }
+.filters select { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; color: var(--text); font-size: 14px; }
+
+.exercise-row { background: var(--bg-input); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+.exercise-row-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.exercise-row-title { font-size: 14px; font-weight: 500; }
+.exercise-fields { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.exercise-fields .form-group { margin-bottom: 0; }
+.exercise-fields label { font-size: 11px; }
+.exercise-fields input { padding: 8px 12px; font-size: 13px; }
+.add-exercise-btn { width: 100%; padding: 12px; background: transparent; border: 1px dashed var(--border); border-radius: 10px; color: var(--text-muted); font-size: 14px; margin-top: 8px; transition: all 0.2s; }
+.add-exercise-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+.exercise-list { overflow-y: auto; flex: 1; }
+.exercise-option { padding: 12px; border-radius: 8px; cursor: pointer; transition: background 0.15s; }
+.exercise-option:hover { background: rgba(255,255,255,0.06); }
+.exercise-option-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+.exercise-option-meta { font-size: 12px; color: var(--text-muted); }
+
+.form-actions { display: flex; gap: 12px; margin-top: 24px; }
+
+.report-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.report-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.report-card h3 { font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+.report-card .value { font-size: 28px; font-weight: 700; }
+.report-card .value.primary { color: var(--primary); }
+.report-card .value.success { color: var(--success); }
+
+.progress-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.progress-row:last-child { border-bottom: none; }
+.progress-name { font-size: 14px; font-weight: 500; }
+.progress-stats { display: flex; gap: 24px; }
+.progress-stat { text-align: right; }
+.progress-stat-label { font-size: 11px; color: var(--text-muted); }
+.progress-stat-value { font-size: 15px; font-weight: 600; }

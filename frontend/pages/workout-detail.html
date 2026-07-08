@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Workout Detail — WorkoutTracker</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <link rel="stylesheet" href="../css/components.css"/>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Workout<span>Tracker</span></div>
+      <nav>
+        <div class="nav-item" onclick="window.location.href='/static/pages/dashboard.html'"><span class="nav-icon">&#9632;</span> Dashboard</div>
+        <div class="nav-item active" onclick="window.location.href='/static/pages/workouts.html'"><span class="nav-icon">&#9651;</span> Workouts</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/create-workout.html'"><span class="nav-icon">&#43;</span> New workout</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/reports.html'"><span class="nav-icon">&#9636;</span> Reports</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/profile.html'"><span class="nav-icon">&#9675;</span> Profile</div>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="user-info">
+          <div class="avatar">?</div>
+          <div>
+            <div class="user-name">—</div>
+            <div class="user-email">—</div>
+          </div>
+        </div>
+        <button class="btn-secondary btn-sm" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <button class="back-btn" onclick="window.location.href='/static/pages/workouts.html'">&#8592; Back to workouts</button>
+
+      <div class="workout-header">
+        <div>
+          <div class="workout-title" id="workoutTitle">—</div>
+          <div class="workout-meta">
+            <span id="workoutDate">—</span>
+            <span id="workoutTime"></span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <span class="badge" id="workoutStatus"></span>
+          <button class="btn-secondary btn-sm" id="editBtn" onclick="goEdit()">Edit</button>
+          <button class="btn-primary btn-sm" id="completeBtn" onclick="markComplete()">Mark complete</button>
+          <button class="btn-danger btn-sm" onclick="removeWorkout()">Delete</button>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Status</div>
+          <div class="info-value" id="infoStatus">—</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Exercises</div>
+          <div class="info-value" id="infoExercises">—</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Total sets</div>
+          <div class="info-value" id="infoSets">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Exercises</div>
+        <table class="exercise-table">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th>Sets</th>
+              <th>Reps</th>
+              <th>Weight</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="exerciseTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/workout-detail.js"></script>
+</body>
+</html>

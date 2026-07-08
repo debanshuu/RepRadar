@@ -7,15 +7,11 @@ function removeToken() { localStorage.removeItem("token"); }
 function isLoggedIn() { return !!getToken(); }
 
 function requireAuth() {
-  if (!isLoggedIn()) {
-    window.location.href = "/frontend/pages/login.html";
-  }
+  if (!isLoggedIn()) window.location.href = "/static/pages/login.html";
 }
 
 function redirectIfLoggedIn() {
-  if (isLoggedIn()) {
-    window.location.href = "/frontend/pages/dashboard.html";
-  }
+  if (isLoggedIn()) window.location.href = "/static/pages/dashboard.html";
 }
 
 async function api(endpoint, options = {}) {
@@ -30,7 +26,7 @@ async function api(endpoint, options = {}) {
   });
   if (res.status === 401) {
     removeToken();
-    window.location.href = "/frontend/pages/login.html";
+    window.location.href = "/static/pages/login.html";
     return;
   }
   return res;
@@ -51,5 +47,18 @@ function formatDate(dateStr) {
 
 function logout() {
   removeToken();
-  window.location.href = "/frontend/pages/login.html";
+  window.location.href = "/static/pages/login.html";
+}
+
+async function loadSidebarUser() {
+  try {
+    const res = await api("/auth/profile");
+    const user = await res.json();
+    const nameEl = document.querySelector(".user-name");
+    const emailEl = document.querySelector(".user-email");
+    const avatarEl = document.querySelector(".avatar");
+    if (nameEl) nameEl.textContent = user.name;
+    if (emailEl) emailEl.textContent = user.email;
+    if (avatarEl) avatarEl.textContent = user.name.charAt(0).toUpperCase();
+  } catch(e) {}
 }

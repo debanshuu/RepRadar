@@ -109,3 +109,5 @@ async function saveWorkout() {
 }
 
 init();
+
+loadSidebarUser();

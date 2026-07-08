@@ -9,7 +9,7 @@ async function handleLogin() {
   const data = await res.json();
   if (res.ok) {
     setToken(data.access_token);
-    window.location.href = "dashboard.html";
+    window.location.href = "/static/pages/dashboard.html";
   } else {
     showToast(data.detail || "Login failed", "error");
     btn.innerHTML = "Log in";
@@ -33,7 +33,7 @@ async function handleRegister() {
     const loginRes = await login(email, password);
     const loginData = await loginRes.json();
     setToken(loginData.access_token);
-    window.location.href = "dashboard.html";
+    window.location.href = "/static/pages/dashboard.html";
   } else {
     showToast(data.detail || "Registration failed", "error");
     btn.innerHTML = "Create account";
@@ -41,7 +41,9 @@ async function handleRegister() {
   }
 }
 
-document.addEventListener("keydown", e => { if (e.key === "Enter") {
-  if (document.getElementById("loginBtn")) handleLogin();
-  if (document.getElementById("registerBtn")) handleRegister();
-}});
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    if (document.getElementById("loginBtn")) handleLogin();
+    if (document.getElementById("registerBtn")) handleRegister();
+  }
+});

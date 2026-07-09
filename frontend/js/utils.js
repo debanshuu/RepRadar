@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = window.location.origin;
 
 function getToken() { return localStorage.getItem("token"); }
 function setToken(t) { localStorage.setItem("token", t); }

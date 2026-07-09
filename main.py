@@ -29,4 +29,3 @@ app.mount("/static", StaticFiles(directory="frontend"), name="static")
 @app.get("/")
 def root():
     return FileResponse("frontend/pages/index.html")
-

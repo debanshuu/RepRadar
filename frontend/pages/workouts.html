@@ -19,23 +19,21 @@
         <div class="nav-item" onclick="window.location.href='/static/pages/profile.html'"><span class="nav-icon">&#9675;</span> Profile</div>
       </nav>
       <div class="sidebar-bottom">
-        <div class="user-info" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div class="user-info">
           <div class="avatar">?</div>
           <div>
-            <div class="user-name" id="sidebarName">—</div>
-            <div class="user-email" id="sidebarEmail">—</div>
+            <div class="user-name">—</div>
+            <div class="user-email">—</div>
           </div>
         </div>
         <button class="btn-secondary btn-sm" style="width:100%" onclick="logout()">Log out</button>
       </div>
     </aside>
-
     <main class="main">
       <div class="page-header">
         <h1>Workouts</h1>
         <button class="btn-primary" style="width:auto;padding:10px 20px" onclick="window.location.href='/static/pages/create-workout.html'">+ New workout</button>
       </div>
-
       <div class="filters">
         <input type="text" id="searchInput" placeholder="Search workouts..." oninput="filterWorkouts()"/>
         <select id="statusFilter" onchange="filterWorkouts()">
@@ -45,13 +43,13 @@
           <option value="cancelled">Cancelled</option>
         </select>
       </div>
-
       <div class="workout-grid" id="workoutGrid">
         <div class="empty-state"><h3>Loading...</h3></div>
       </div>
     </main>
   </div>
-
+  <script src="/static/js/utils.js"></script>
   <script src="/static/js/api.js"></script>
-  
+  <script src="/static/js/workouts.js"></script>
+</body>
 </html>

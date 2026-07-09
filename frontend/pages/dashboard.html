@@ -12,59 +12,36 @@
     <aside class="sidebar">
       <div class="sidebar-logo">Workout<span>Tracker</span></div>
       <nav>
-        <div class="nav-item active" onclick="window.location.href='/static/pages/dashboard.html'">
-          <span class="nav-icon">&#9632;</span> Dashboard
-        </div>
-        <div class="nav-item" onclick="window.location.href='/static/pages/workouts.html'">
-          <span class="nav-icon">&#9651;</span> Workouts
-        </div>
-        <div class="nav-item" onclick="window.location.href='/static/pages/create-workout.html'">
-          <span class="nav-icon">&#43;</span> New workout
-        </div>
-        <div class="nav-item" onclick="window.location.href='/static/pages/reports.html'">
-          <span class="nav-icon">&#9636;</span> Reports
-        </div>
-        <div class="nav-item" onclick="window.location.href='/static/pages/profile.html'">
-          <span class="nav-icon">&#9675;</span> Profile
-        </div>
+        <div class="nav-item active" onclick="window.location.href='/static/pages/dashboard.html'"><span class="nav-icon">&#9632;</span> Dashboard</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/workouts.html'"><span class="nav-icon">&#9651;</span> Workouts</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/create-workout.html'"><span class="nav-icon">&#43;</span> New workout</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/reports.html'"><span class="nav-icon">&#9636;</span> Reports</div>
+        <div class="nav-item" onclick="window.location.href='/static/pages/profile.html'"><span class="nav-icon">&#9675;</span> Profile</div>
       </nav>
       <div class="sidebar-bottom">
-        <div class="user-info" style="margin-bottom:12px">
-          <div class="avatar" id="avatarInitial">?</div>
+        <div class="user-info">
+          <div class="avatar">?</div>
           <div>
-            <div class="user-name" id="sidebarName">—</div>
-            <div class="user-email" id="sidebarEmail">—</div>
+            <div class="user-name">—</div>
+            <div class="user-email">—</div>
           </div>
         </div>
         <button class="btn-secondary btn-sm" style="width:100%" onclick="logout()">Log out</button>
       </div>
     </aside>
-
     <main class="main">
       <div class="page-header">
-        <h1 id="welcomeMsg">Welcome back!</h1>
-        <p>Here's your fitness overview</p>
+        <div>
+          <h1 id="welcomeMsg">Welcome back!</h1>
+          <p>Here's your fitness overview</p>
+        </div>
       </div>
-
       <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Total workouts</div>
-          <div class="stat-value primary" id="statTotal">—</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Completed</div>
-          <div class="stat-value success" id="statCompleted">—</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Pending</div>
-          <div class="stat-value warning" id="statPending">—</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">This month</div>
-          <div class="stat-value" id="statMonthly">—</div>
-        </div>
+        <div class="stat-card"><div class="stat-label">Total workouts</div><div class="stat-value primary" id="statTotal">—</div></div>
+        <div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value success" id="statCompleted">—</div></div>
+        <div class="stat-card"><div class="stat-label">Pending</div><div class="stat-value warning" id="statPending">—</div></div>
+        <div class="stat-card"><div class="stat-label">This month</div><div class="stat-value" id="statMonthly">—</div></div>
       </div>
-
       <div class="two-col">
         <div class="card">
           <div class="section-header">
@@ -74,15 +51,14 @@
           <div id="upcomingList"><div class="empty-state"><h3>No upcoming workouts</h3><p>Create one to get started</p></div></div>
         </div>
         <div class="card">
-          <div class="section-header">
-            <h2>Recent activity</h2>
-          </div>
+          <div class="section-header"><h2>Recent activity</h2></div>
           <div id="recentList"><div class="empty-state"><h3>No activity yet</h3><p>Complete a workout to see it here</p></div></div>
         </div>
       </div>
     </main>
   </div>
-
+  <script src="/static/js/utils.js"></script>
   <script src="/static/js/api.js"></script>
-  
+  <script src="/static/js/dashboard.js"></script>
+</body>
 </html>
